@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:splitwise/pages/account.dart';
-import 'package:splitwise/pages/activity.dart';
+
 import 'package:splitwise/pages/friends.dart';
 import 'package:splitwise/pages/groups.dart';
 
@@ -12,11 +12,29 @@ class BottomNavigationTab extends StatefulWidget {
 class _BottomNavigationTabState extends State<BottomNavigationTab> {
   int _index = 0;
 
-  final List<Widget> _pages = [Groups(), Friends(), Activity(), Account()];
+  final List<Widget> _pages = [Groups(), Friends(), Account()];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.blue[600],
+          elevation: 3,
+          title: Text(
+            "SplitPay",
+            style: TextStyle(fontSize: 22),
+          ),
+          actions: [
+            Padding(
+              padding: const EdgeInsets.only(right: 5),
+              child: Icon(Icons.notifications),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right: 8.0),
+              child: Icon(Icons.more_vert),
+            )
+          ],
+        ),
         bottomNavigationBar: BottomNavigationBar(
             currentIndex: _index,
             onTap: (index) {
@@ -43,14 +61,6 @@ class _BottomNavigationTabState extends State<BottomNavigationTab> {
                   "Friends",
                 ),
                 icon: Icon(Icons.person),
-              ),
-              BottomNavigationBarItem(
-                title: Text(
-                  "Activity",
-                ),
-                icon: Icon(
-                  Icons.image,
-                ),
               ),
               BottomNavigationBarItem(
                 title: Text(
